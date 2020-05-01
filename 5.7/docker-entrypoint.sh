@@ -380,5 +380,6 @@ _main() {
 
 # If we are sourced from elsewhere, don't perform any further actions
 if ! _is_sourced; then
+	trap 'docker_temp_server_stop' SIGTERM SIGINT
 	_main "$@"
 fi
